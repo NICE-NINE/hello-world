@@ -1,18 +1,164 @@
-<!DOCTYPE html>
-
-<html>
+﻿<!DOCTYPE html>
+<html lang="zh-CN" style="font-size: 100px;" class="translated-ltr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="static/ticket.min.css">
+    <title>淘宝小秘密</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+              resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+              recalc = function () {
+                  var clientWidth = docEl.clientWidth;
+                  if (!clientWidth) return;
+                  if (clientWidth >= 750) {
+                      docEl.style.fontSize = '100px';
+                  } else {
+                      docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                  }
+              };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <style>
+        html, body { height: 100%; min-height: 100%; background-color: #fde9d0; }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="static/translateelement.css">
 </head>
-
 <body>
+    <div class="ticket" data-clipboard-action="copy" data-clipboard-target="#sharetext">
+        <div class="ticket-erow1"></div>
+        <div class="ticket-erow2">
+            <div>
+                <h1 id="p1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打开微信添加公众号，领取优惠券</font></font></h1>
+                <div class="ticket-input">
+                    <input type="text" name="" id="sharetext" value="">
+                </div>
+                <div class="ticket-btn">
+                    <span><span id="p2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点击复制公众号</font></font></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="ticket-erow3"></div>
+    </div>
+    <div class="toast-mask" onclick="hidepop()" style="display: none;"></div>
+    <h2 class="ticket-h2" id="p3" style="display: none;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加微信公众号，领取优惠券</font></font></h2>
+    <div class="toast-pop gerenhao" onclick="hidepop()" style="top: -1136.82px; display: none;">
+        <div class="toast-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制成功！</font></font><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></span></div>
+        <div class="toast-list">
+            <div>
+                <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打开微信，点击右上角“+”图标，选择“添加朋友-->公众号”</font></font></p>
+                <div>
+                    <img src="static/s1.png" alt="">
+                </div>
+            </div>
+            <div>
+                <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点击输入框，长按屏幕，选择“粘贴”</font></font></p>
+                <div>
+                    <img src="static/s2.png" alt="">
+                </div>
+            </div>
+            <div>
+                <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点击输入框下方的搜索结果，选择“关注公众号”</font></font></p>
+              
+                <div  style=" min-height:40mm; background:url(static/6.png) no-repeat center center;background-size:90% 90%;">                                                           
+                   <br />                    
+                    <span id="shousuo" style="padding:8mm; font-size:13px;"></span> <div style="min-height:9mm;"></div><strong id="chazhao" style="padding:25mm;color:green;font-size:18px;"></strong> 
+                </div>                  
+            </div>
+        </div>
+    </div>
+    <div class="toast-fail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制失败</font></font></div>
+    <div style="display:none;">
+        <script type="text/javascript" src="https://s5.cnzz.com/z_stat.php?id=1277366898&web_id=1277366898"></script>
+    </div>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+    <script src="static/jquery.min.js"></script>
+    <script src="static/clipboard.min.js"></script>
+    <script>
+        function sGet(a) {
+            try {
+                if (!window.localStorage[a]) {
+                    return null
+                }
+                var b = JSON.parse(window.localStorage[a]);
+                return b.time < (new Date).getTime() ? (window.localStorage[a] = null) : b.value
+            } catch (c) {
+                return console.log("not localStorage."), null
+            }
+        }
+        function sSet(a, b, c) {
+            try {
+                var e = {
+                    name: a,
+                    value: b,
+                    time: (new Date).getTime() + 1000 * c
+                };
+                window.localStorage[a] = JSON.stringify(e)
+            } catch (f) {
+                console.log("not localStorage.")
+            }
+        }
+        function getQueryString(a) {
+            a = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");
+            a = window.location.search.substr(1).match(a);
+            return null != a ? unescape(a[2]) : ""
+        }
+        function getrobot() {
+            var old_robot = sGet("robot");
+            var qd = getQueryString("qd");
+            if (old_robot == null) {
+                old_robot = "";
+            }
+            function getRandomArrayElements(arr, count) {
+                var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+                while (i-- > min) {
+                    index = Math.floor((i + 1) * Math.random());
+                    temp = shuffled[index];
+                    shuffled[index] = shuffled[i];
+                    shuffled[i] = temp;
+                }
+                return shuffled.slice(min);
+            }
+            var items = ['小鱼儿好物', '小鱼儿好物'];///更换微信号码
+            $('#sharetext').val(getRandomArrayElements(items, 1)[0]);
+            //debugger;
+           
+            <!-- if ($('#sharetext').val() == "Xiaohuolong123321") { -->
+                <!-- $("#chazhao").html('Xiaohuolong123321'); -->
+                <!-- $("#shousuo").html('Xiaohuolong123321'); -->
+            <!-- } else { -->
+                <!-- $("#chazhao").html('小鱼儿好物'); -->
+                <!-- $("#shousuo").html('小鱼儿好物'); -->
+            <!-- } -->
+        }
+        var clientHeight = $(document.body).height();
+        $(".ticket").click(function () {
+            var clipboard = new ClipboardJS('.ticket');
+            clipboard.on("success", function (e) {
+                $(".toast-mask").show();
+                sSet("robot", $('#sharetext').val(), 864000);
+                var top = (clientHeight - $('.toast-pop').height()) / 2;
+                $('.toast-pop').css({ 'top': top }).show();
+                e.clearSelection();
+            });
+            clipboard.on("error", function (e) {
+                $(".toast-mask").show();
+            });
+        })
+        function hidepop() {
+            $(".toast-mask").hide();
+            $(".toast-pop").hide();
+        }
+        $(function () { getrobot(); });
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+    </script>
+
 
 </body>
 </html>
